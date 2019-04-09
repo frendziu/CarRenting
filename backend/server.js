@@ -5,13 +5,13 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const carRoutes = express.Router();
 const PORT = 4000;
-
+var config = require('../config/config');
 let Car = require('./car.schema.js');
 
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://user:asus123@ds123796.mlab.com:23796/uslugi_slubne_db', { useNewUrlParser: true });
+mongoose.connect(config.mongoURI, { useNewUrlParser: true });
 const connection = mongoose.connection;
 
 connection.once('open', function() {
