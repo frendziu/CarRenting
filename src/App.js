@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import CreateCar from "./admincomponents/create-cars.component";
 import EditCar from "./admincomponents/edit-cars.component";
 import CarsList from "./admincomponents/cars-list.component";
+import DeleteCar from  "./admincomponents/delete-cars.component";
 
 import logo from "./logo.svg";
 
@@ -34,7 +35,8 @@ class App extends Component {
                     <Route path="/" exact component={CarsList} />
                     <Route path="/edit/:id" component={EditCar} />
                     <Route path="/create" component={CreateCar} />
-                </div>
+                    <Route path="/delete/:id" component={DeleteCar} />
+            </div>
             </Router>
         );
     }

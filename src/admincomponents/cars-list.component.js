@@ -10,6 +10,8 @@ const Cars = props => (
         <td>{props.car.car_availability}</td>
         <td>
             <Link to={"/edit/"+props.car._id}>Edit</Link>
+            <Link to={"/delete/"+props.car._id}>Delete</Link>
+
         </td>
     </tr>
 )

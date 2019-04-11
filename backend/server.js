@@ -65,6 +65,14 @@ carRoutes.route('/add').post(function(req, res) {
         });
 });
 
+carRoutes.route('/delete/:id').delete(function (req, res) {
+    Car.findByIdAndRemove(req.params.id, function (err) {
+        if (err) return next(err);
+        res.send('Deleted successfully!');
+    })
+});
+
+
 app.use('/cars', carRoutes);
 
 app.listen(PORT, function() {

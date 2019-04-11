@@ -110,7 +110,7 @@ export default class CreateCars extends Component {
                                     checked={this.state.car_availability==='Available'}
                                     onChange={this.onChangeCarAvailability}
                             />
-                            <label className="form-check-label">Yes</label>
+                            <label className="form-check-label">Available</label>
                         </div>
                         <div className="form-check form-check-inline">
                             <input  className="form-check-input"
@@ -118,10 +118,10 @@ export default class CreateCars extends Component {
                                     name="availabilityOptions"
                                     id="availabilityNo"
                                     value="Inaccessible"
-                                    checked={this.state.todo_priority==='Inaccessible'}
+                                    checked={this.state.car_availability==='Inaccessible'}
                                     onChange={this.onChangeCarAvailability}
                             />
-                            <label className="form-check-label">No</label>
+                            <label className="form-check-label">Inaccessible</label>
                         </div>
 
                     </div>
