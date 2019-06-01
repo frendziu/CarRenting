@@ -5,6 +5,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 
 class Search extends Component {
+
+    state = {
+        query: '',
+    }
+
+    handleInputChange = () => {
+        this.setState({
+            query: this.search.value
+        })
+    }
+
     render() {
         return (
             <Router>
@@ -24,6 +35,15 @@ class Search extends Component {
 
 
                 </div>
+
+                <form>
+                    <input
+                        placeholder="Search for..."
+                        ref={input => this.search = input}
+                        onChange={this.handleInputChange}
+                    />
+                    <p>{this.state.query}</p>
+                </form>
 
             </Router>
         );

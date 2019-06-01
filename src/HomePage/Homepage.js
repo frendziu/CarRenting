@@ -7,7 +7,7 @@ import AdminPanel from "../admincomponents/App.js";
 import Searching from "../searchcomponents/search.js";
 import Form from "../formcomponents/form.js"
 import Login from "../logincomponents/login.js"
-import image from "../image/meme.jpeg"
+import image from "../image/meme.jpg"
 
 class Homepage extends Component {
     render() {
@@ -41,7 +41,7 @@ class Homepage extends Component {
                     <Route path="/admin" exact component={AdminPanel}/>
 
                 </div>
-                <div className ="">
+                <div className ="App">
                     <img  src={image} alt="fireSpot"/>
                 </div>
 

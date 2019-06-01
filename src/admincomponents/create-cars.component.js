@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-//import { Combobox } from 'react-widgets'
+import Select from 'react-select'
 
-
-//let { Combobox } = ReactWidgets
-//let types = ['Sedan', 'Combi', 'Coupe', 'Hatchback'];
-
+const types = [
+    {label: "Sedan", value: 1 },
+    {label: "Combi", value: 2 },
+    {label: "Coupe", value: 3 },
+    {label: "Hatchback", value: 4 },
+];
 export default class CreateCars extends Component {
     constructor(props) {
         super(props);
@@ -23,6 +25,11 @@ export default class CreateCars extends Component {
             car_availability: ''
         }
     }
+
+    state = {
+        selectedOption: null,
+    }
+
     onChangeCarName(e) {
         this.setState({
             car_name: e.target.value
@@ -46,6 +53,10 @@ export default class CreateCars extends Component {
         })
     }
 
+    handleChange = (selectedOption) => {
+        this.setState({ selectedOption });
+        console.log(`Option selected:`, selectedOption);
+    }
 
     onSubmit(e) {
         e.preventDefault();
@@ -75,6 +86,8 @@ export default class CreateCars extends Component {
     }
 
     render() {
+        const { selectedOption } = this.state;
+
         return (
             <div style={{marginTop: 10}}>
                 <h3>Create New Car</h3>
@@ -94,6 +107,14 @@ export default class CreateCars extends Component {
                             className="form-control"
                             value={this.state.car_price}
                             onChange={this.onChangeCarPrize}
+                        />
+                    </div>
+
+                    <div className= "form-group">
+                        <label>Car Type2: </label>
+                        <Select        value={selectedOption}
+                                       onChange={this.handleChange}
+                                       type={types}
                         />
                     </div>
                     <div className="form-group">
