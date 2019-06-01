@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+//import { Combobox } from 'react-widgets'
+
+
+//let { Combobox } = ReactWidgets
+//let types = ['Sedan', 'Combi', 'Coupe', 'Hatchback'];
+
 export default class CreateCars extends Component {
     constructor(props) {
         super(props);

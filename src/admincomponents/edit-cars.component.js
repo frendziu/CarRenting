@@ -72,7 +72,7 @@ export default class EditCar extends Component {
         axios.post('http://localhost:4000/cars/update/'+this.props.match.params.id, obj)
             .then(res => console.log(res.data));
 
-        this.props.history.push('/');
+        this.props.history.push('/admin');
     }
 
     render() {
