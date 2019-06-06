@@ -4,6 +4,8 @@ import { Button, FormGroup, FormControl , FormLabel} from "react-bootstrap";
 import "./login.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import Signup from "./Signup";
+
 
 class Login extends Component {
 
@@ -39,20 +41,20 @@ class Login extends Component {
                         <div className="collpase navbar-collapse">
                             <ul className="navbar-nav mr-auto">
                                 <li className="navbar-item">
-
+                                    <Link to="/login/register" className="nav-link">Sign Up</Link>
                                 </li>
                             </ul>
 
                         </div>
                     </nav>
+
                     <br/>
-
-
+                    <Route path="/login/register" component={Signup} />
                 </div>
                 <div className="Login">
                     <form onSubmit={this.handleSubmit}>
                         <FormGroup controlId="email" bsSize="large">
-                            <FormLabel>Email</FormLabel>
+                            <label>Email</label>
                             <FormControl
                                 autoFocus
                                 type="email"
@@ -61,7 +63,7 @@ class Login extends Component {
                             />
                         </FormGroup>
                         <FormGroup controlId="password" bsSize="large">
-                            <FormLabel>Password</FormLabel>
+                            <label>Password</label>
                             <FormControl
                                 value={this.state.password}
                                 onChange={this.handleChange}

@@ -22,7 +22,7 @@ class App extends Component {
                                     <Link to="/admin/" className="nav-link">Cars</Link>
                                 </li>
                                 <li className="navbar-item">
-                                    <Link to="/admin/create" className="nav-link">Add Cars</Link>
+                                    <Link to="/admin/create/" className="nav-link">Add Cars</Link>
                                 </li>
                             </ul>
                         </div>

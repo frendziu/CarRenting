@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Select from 'react-select'
-
+//import Select from 'react-select'
+//import DropDownList  from 'react-dropdown'
 const types = [
-    {label: "Sedan", value: 1 },
-    {label: "Combi", value: 2 },
-    {label: "Coupe", value: 3 },
-    {label: "Hatchback", value: 4 },
+    {text: 'Sedan', id: 1 },
+    {text: 'Combi', id: 2 },
+    {text: 'Coupe', id: 3 },
+    {text: 'Hatchback', id: 4},
 ];
 export default class CreateCars extends Component {
     constructor(props) {
@@ -26,9 +26,7 @@ export default class CreateCars extends Component {
         }
     }
 
-    state = {
-        selectedOption: null,
-    }
+
 
     onChangeCarName(e) {
         this.setState({
@@ -53,10 +51,7 @@ export default class CreateCars extends Component {
         })
     }
 
-    handleChange = (selectedOption) => {
-        this.setState({ selectedOption });
-        console.log(`Option selected:`, selectedOption);
-    }
+
 
     onSubmit(e) {
         e.preventDefault();
@@ -86,8 +81,6 @@ export default class CreateCars extends Component {
     }
 
     render() {
-        const { selectedOption } = this.state;
-
         return (
             <div style={{marginTop: 10}}>
                 <h3>Create New Car</h3>
@@ -103,7 +96,7 @@ export default class CreateCars extends Component {
                     <div className="form-group">
                         <label>Car Price: </label>
                         <input
-                            type="text"
+                            type="number"
                             className="form-control"
                             value={this.state.car_price}
                             onChange={this.onChangeCarPrize}
@@ -111,13 +104,6 @@ export default class CreateCars extends Component {
                     </div>
 
                     <div className= "form-group">
-                        <label>Car Type2: </label>
-                        <Select        value={selectedOption}
-                                       onChange={this.handleChange}
-                                       type={types}
-                        />
-                    </div>
-                    <div className="form-group">
                         <label>Car Type: </label>
                         <input
                             type="text"
@@ -125,7 +111,9 @@ export default class CreateCars extends Component {
                             value={this.state.car_type}
                             onChange={this.onChangeCarType}
                         />
+
                     </div>
+
                     <label>Car availability: </label>
                     <div className="form-group">
                         <div className="form-check form-check-inline">
