@@ -3,10 +3,10 @@ import axios from 'axios';
 
 const Cars = props => (
     <tr>
-        <td>{props.car.name}</td>
-        <td>{props.car.price}</td>
-        <td>{props.car.type}</td>
-        <td>{props.car.availability}</td>
+        <td>{props.car.car_name}</td>
+        <td>{props.car.car_price}</td>
+        <td>{props.car.car_type}</td>
+        <td>{props.car.car_availability}</td>
     </tr>
 )
 
@@ -23,7 +23,7 @@ class productsRead extends Component{
     }
 
     componentDidMount() {
-        axios.get('http://localhost:4000/products/')
+        axios.get('http://localhost:4000/cars/')
             .then(response => {
                 this.setState({ cars: response.data });
             })
@@ -35,7 +35,7 @@ class productsRead extends Component{
     filteredList(){
         return this.state.cars.filter(
             (filt)=>
-                filt.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+                filt.car_name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
         ).map(function(currentCar, i){
             return <Cars car={currentCar} key={i} />;
         })
@@ -49,6 +49,8 @@ class productsRead extends Component{
                        value={this.state.search}
                        onChange={this.updateSearch.bind(this)}
                        placeholder={'search by name'}/>
+
+
 
                 <table className="table table-bordered" style={{ marginTop: 20 }} >
                     <thead>
