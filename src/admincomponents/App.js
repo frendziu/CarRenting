@@ -7,6 +7,8 @@ import CreateCar from "./create-cars.component";
 import EditCar from "./edit-cars.component";
 import CarsList from "./cars-list.component";
 import DeleteCar from "./delete-cars.component";
+import FormList from "./form-list.component";
+import DeleteForm from "./delete-form.component"
 
 class App extends Component {
     render() {
@@ -24,6 +26,9 @@ class App extends Component {
                                 <li className="navbar-item">
                                     <Link to="/admin/create/" className="nav-link">Add Cars</Link>
                                 </li>
+                                <li className="navbar-item">
+                                    <Link to="/admin/forms/" className="nav-link">Messages</Link>
+                                </li>
                             </ul>
                         </div>
                     </nav>
@@ -32,6 +37,8 @@ class App extends Component {
                     <Route path="/admin/edit/:id" component={EditCar} />
                     <Route path="/admin/create" component={CreateCar} />
                     <Route path="/admin/delete/:id" component={DeleteCar} />
+                    <Route path="/admin/forms" component={FormList} />
+                    <Route path="/admin/forms/delete/:id" component={DeleteForm} />
             </div>
             </Router>
         );

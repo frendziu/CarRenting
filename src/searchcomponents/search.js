@@ -1,53 +1,72 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React, { Component } from 'react';
+import axios from 'axios';
 
-import "bootstrap/dist/css/bootstrap.min.css";
+const Cars = props => (
+    <tr>
+        <td>{props.car.name}</td>
+        <td>{props.car.price}</td>
+        <td>{props.car.type}</td>
+        <td>{props.car.availability}</td>
+    </tr>
+)
 
-
-class Search extends Component {
-
-    state = {
-        query: '',
+class productsRead extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            search:'',
+            cars: []};
     }
 
-    handleInputChange = () => {
-        this.setState({
-            query: this.search.value
+    updateSearch(e){
+        this.setState({search:e.target.value.substr(0,20)});
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:4000/products/')
+            .then(response => {
+                this.setState({ cars: response.data });
+            })
+            .catch(function (error){
+                console.log(error);
+            })
+    }
+
+    filteredList(){
+        return this.state.cars.filter(
+            (filt)=>
+                filt.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+        ).map(function(currentCar, i){
+            return <Cars car={currentCar} key={i} />;
         })
     }
 
     render() {
+        let filteredProducts = this.props.Cars;
         return (
-            <Router>
-                <div className="container">
-                    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                        <Link to="/search" className="navbar-brand">Search</Link>
-                        <div className="collpase navbar-collapse">
-                            <ul className="navbar-nav mr-auto">
-                                <li className="navbar-item">
+            <div>
+                <input type="text"
+                       value={this.state.search}
+                       onChange={this.updateSearch.bind(this)}
+                       placeholder={'search by name'}/>
 
-                                </li>
-                            </ul>
+                <table className="table table-bordered" style={{ marginTop: 20 }} >
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Type</th>
+                        <th>Availability</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {this.filteredList()}
+                    </tbody>
+                </table>
+            </div>
 
-                        </div>
-                    </nav>
-                    <br/>
 
-
-                </div>
-
-                <form>
-                    <input
-                        placeholder="Search for..."
-                        ref={input => this.search = input}
-                        onChange={this.handleInputChange}
-                    />
-                    <p>{this.state.query}</p>
-                </form>
-
-            </Router>
-        );
+        )
     }
 }
-
-export default Search;
+export default productsRead;
