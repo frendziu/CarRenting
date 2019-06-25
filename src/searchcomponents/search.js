@@ -42,7 +42,7 @@ class productsRead extends Component{
     }
 
     render() {
-        let filteredProducts = this.props.Cars;
+       // let filteredProducts = this.props.Cars;
         return (
             <div>
                 <input type="text"

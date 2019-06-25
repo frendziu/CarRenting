@@ -7,10 +7,13 @@ const carRoutes = express.Router();
 const formRoutes = express.Router();
 const PORT = 4000;
 
-var config = require('../config/config');
-let Car = require('./car.schema.js');
-let Form = require('./form.schema.js');
+const passport = require("passport");
 
+var config = require('../config/config');
+let Car = require('./models/car.schema.js');
+let Form = require('./models/form.schema.js');
+
+const users = require("./users");
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -109,10 +112,19 @@ formRoutes.route('/delete/:id').delete(function (req, res, next) {
         if (err) return next(err);
         res.send('Deleted successfully!');
     })
-});
+})
 
 app.use('/cars', carRoutes);
 app.use('/form', formRoutes);
+
+// Passport middleware
+app.use(passport.initialize());
+// Passport config
+require("./services/passport")(passport);
+
+// Log/Register
+app.use('/api/users', users);
+
 
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);

@@ -2,12 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 //import Select from 'react-select'
 //import DropDownList  from 'react-dropdown'
-const types = [
-    {text: 'Sedan', id: 1 },
-    {text: 'Combi', id: 2 },
-    {text: 'Coupe', id: 3 },
-    {text: 'Hatchback', id: 4},
-];
+
 export default class CreateCars extends Component {
     constructor(props) {
         super(props);

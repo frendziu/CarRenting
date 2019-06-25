@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router,  Link } from "react-router-dom";
 import "./styless.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
@@ -60,14 +60,14 @@ class Form extends Component {
         console.log(`Email: ${this.state.email}`);
         console.log(`Subject: ${this.state.subject}`);
 
-        const newCar = {
+        const newForm = {
             first_name: this.state.first_name,
             last_name: this.state.last_name,
             email: this.state.email,
             subject: this.state.subject
         };
 
-        axios.post('http://localhost:4000/form/add', newCar)
+        axios.post('http://localhost:4000/form/add', newForm)
             .then(res => console.log(res.data));
 
         this.setState({
